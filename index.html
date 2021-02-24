@@ -1,0 +1,447 @@
+<html>
+<head>
+<script type="text/javascript">   
+loopy()   
+function loopy() {   
+var sWord =""  
+while (sWord != "appops123") { 
+sWord = prompt("输入正确密码才能登陆!")   
+}   
+}   
+</script>
+</head>
+<body>
+<p>
+	<span style="color:#E53333;"><img src="redhat.jpg" alt="" height="100" width="500" /></span> 
+</p>
+<p>
+	<span></span> 
+</p>
+<p>
+	<span></span> 
+</p>
+<h1>
+	<span style="color:#E53333;">APPOps Red Hat Openshift Training</span> 
+</h1>
+<h2>
+	<span style="color:#E53333;"><strong>注意:环境和练习题禁止任何形式的扩散和外传！！！</strong></span> 
+</h2>
+<p>
+	<br />
+</p>
+<p>
+	<span style="background-color:#FFFFFF;color:#60D978;"><u><strong>红帽考试注意事项：</strong></u></span> 
+</p>
+<p>
+	<span style="background-color:#FFFFFF;"><u>1.3小时上机作答时间，280是11道题，288是9道题，全是英文题</u></span> 
+</p>
+<p>
+	<span style="background-color:#FFFFFF;"><u>2.一定要审好题，题里的项目名或者各种链接之类的要尽量直接复制粘贴，以免敲错</u></span> 
+</p>
+<p>
+	<span style="background-color:#FFFFFF;"><u>3.答完后无需提交，直接离开考场即可</u></span> 
+</p>
+<p>
+	<span style="background-color:#FFFFFF;"><u>4.申请红帽账号，考试时需要填一个邮箱</u></span> 
+</p>
+<p>
+	<span style="background-color:#FFFFFF;"><u>5.做题时要先把题整个读一遍，不要直接读一条，做一步，因为顺序有可能不对的</u></span> 
+</p>
+<p>
+	<span style="background-color:#FFFFFF;"><u>6.280考试在master节点做即可，不需要切换主机和用户。288考试主要在workbench，根据题意切换主机或用户答题</u></span> 
+</p>
+<p>
+	<u>7.题里说用源码创建的 就是new-app url，说从docker镜像仓库创建的 就是new-app --docker-image=xxxx</u> 
+</p>
+<p>
+	<u>8.每一道练习题，要熟练到可以在10分钟内答完，考试才能顺利通过</u> 
+</p>
+<p>
+	<u>9.考试答题之前，一定要认真阅读"Additional configuration information",里面记录了主机名、ip、挂载点、用户密码等重要信息,另外还有可以查询的一个文档链接</u> 
+</p>
+<p>
+	<br />
+</p>
+<div id="main">
+    <div id="show_time">
+        <script>
+            setInterval("show_time.innerHTML=new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+        </script>
+    </div>
+</div>
+<p>
+	<span style="color:#337FE5;"><strong>N</strong></span>=个人编号，请把题里的N换成对应的编号再做答
+</p>
+<p>
+	<span style="background-color:#FFFFFF;"></span> 
+</p>
+<p>
+	<strong><span style="color:#60D978;">习题1：部署一个应用（288-1）</span></strong> 
+</p>
+<p>
+	部署一个 JavaScript 应用程序，需要利用了 Node.js 的运行环境并满足下列要求
+</p>
+<ul>
+	<li>
+		项目名称为&nbsp; &nbsp;project-1-<span style="color:#337FE5;"><b>N</b></span> 
+	</li>
+	<li>
+		应用程序的名称为 hello-appops
+	</li>
+	<li>
+		成功部署后应用程序应该可以通过 http://hello-<span style="color:#337FE5;"><b>N</b></span>.apps.example.com 进行访问,页面内容为"Hello AppOps!"(实际考试过程中，该任务需要复制粘贴一段话提交到页面上)
+	</li>
+	<li>
+		程序源代码存储的位置是 &nbsp;http://openshift.example.com:8083/root/nodejs-helloworld-<span style="color:#337FE5;"><b>N</b></span>.git 使用root/redhat123验证git
+	</li>
+	<li>
+		编译应用程序必要的NPM模块存储在这个地址 http://openshift.example.com:8081/nexus/content/groups/nodejs/ 可以通过 配置npm_config_registry 将NPM 模块的位置传递给S2i流程中的 Builder image
+	</li>
+	<li>
+		可以使用 python 的 json.tool 模块进行troubleshooting
+	</li>
+</ul>
+<p>
+	<span><strong><span style="color:#60D978;">习题2：</span></strong><span style="color:#60D978;"><strong>配置 Configmap</strong></span><strong><span style="color:#60D978;">（288-4）</span></strong></span> 
+</p>
+<p>
+	使用docker镜像 docker-registry.default.svc:5000/openshift/flask 创建应用并满足下列要求
+</p>
+<ul>
+	<li>
+		应用程序的名称为 flask-test
+	</li>
+	<li>
+		该应用是被叫做 project-2-<span style="color:#337FE5;"><strong>N</strong></span> 的项目的一部分
+	</li>
+	<li>
+		当应用程序部署成功之后，用户可以通过 http://flask-N.apps.example.com 进行访问，访问结果为：APP_ENV var is ==&gt; Hello AppOps
+	</li>
+	<li>
+		请创建一个名为 flaskconf的configmap，这个configmap中应该包含 AAA 变量名和 Hello AppOps 值，<span> </span>当configmap被创建完毕后，请把这个configmap的配置内容导出到/tmp/flaskconf-<strong><span style="color:#337FE5;">N</span></strong>.json(本任务在288实际考试中会提示在master节点执行)
+	</li>
+</ul>
+<p>
+        <span><strong><span style="color:#60D978;">习题3：</span></strong><span style="color:#60D978;"><strong>创建imagestream，利用该imagestream和原码来发布app</strong></span><strong><span style="color:#60D978;">（288-8）</span></strong></span>
+</p>
+<p>
+        基于取自http://openshift.example.com:8083/root/ex288-8.git的原码来发布app，采取任何必要的步骤，从而让你的app可以成功的构建、部署、运行
+</p>
+<ul>
+        <li>
+                使用镜像docker-registry.default.svc:5000/openshift/httpd创建一个新的imagestream名为apache作为构建用的基础镜像(实际考试中基础镜像是ruby,并且并未指出镜像地址，需要登录镜像仓库自己查找)
+        </li>
+        <li>
+                使用该镜像，配合原码来发布名为web的应用
+        </li>
+        <li>
+                该应用属于项目project-3-<span style="color:#337FE5;"><strong>N</strong></span>
+        </li>
+        <li>
+                创建一个名为webcmap的configmap，其中包含变量：OCUSER=devuser和NUMBER=<span style="color:#337FE5;"><strong>20</strong></span>，并将该configmap绑定带上述应用中。
+        </li>
+		<li>
+                用你所学知识来验证上面操作的正确性
+        </li>
+</ul>
+<p>
+        <span><strong><span style="color:#60D978;">习题4：</span></strong><span style="color:#60D978;"><strong>发布S2I的app并创建build-hook</strong></span><strong><span style="color:#60D978;">（288-6）</span></strong></span>
+</p>
+<p>
+        使用http://openshift.example.com:8083/root/ex288-9.git中的源代码部署具有以下特征的应用程序:
+</p>
+<ul>
+        <li>
+                应用名为blog
+        </li>
+        <li>
+                该应用程序是octane-<span style="color:#337FE5;"><strong>N</strong></span>项目的一部分
+        </li>
+        <li>
+                一旦部署完毕，应用程序正在运行，并可通过以下URL访问: http://blog-octane-<span style="color:#337FE5;"><strong>N</strong></span>.apps.example.com
+        </li>
+        <li>
+                构建完成后，做一个post-build hook，让它运行shell命令“cat /opt/app-root/etc/php.ini.template”。
+        </li>
+</ul>
+<p>
+        (注意:为了触发hook，您需要在之后启动一个新的构建。您可以检查文件/var/log/maillog的内容，以查看构建后挂钩是否工作)
+</p>
+<p>
+        <strong><span style="color:#60D978;">习题5：模板（288-9）</span></strong>
+</p>
+<p>
+        在workbench.domain1.example.com上创建项目indy-<span style="color:#337FE5;"><strong>N</strong></span>，并从http://control.example.com:8080/materials/template-notready.yaml 编辑OpenShift模板，以便:
+</p>
+<ul>
+        <li>
+                它使用可用的PHP和MYSQL版本
+        </li>
+        <li>
+                它使用来自http://openshift.example.com:8083/root/ex288-9.git的git存储库
+        </li>
+        <li>
+                模板有一个新的自定义参数HELLO_AUDIENCE，这不是强制的参数，默认值为字符串Avatar
+		</li>
+        <li>
+                在项目indy-x中运行oc get templates时，回显为ex288-php-mysql
+		</li>
+        <li>
+                只运行oc new-app ex288-php-mysql，没有任何参数时，结果必须失败。
+        </li>
+        <li>
+                运行oc new-app ex288-php-mysql -p APPLICATION_DOMAIN=php-app-indy-<span style="color:#337FE5;"><strong>N</strong></span>.apps.example.com 将生成应用程序并在以下url http://php-app-indy-20.apps.example.com 上运行
+        </li>
+		<li>
+                运行oc new-app ex288-php-mysql -p APPLICATION_DOMAIN=php-app-indy-<span style="color:#337FE5;"><strong>N</strong></span>.apps.example.com -p HELLO_MESSAGE=Hi -p HELLO_AUDIENCE=Buddy 可以使得应用程序被构建并运行在以下url http://php-app-indy-20.apps.example.com 应用程序页面的显示文本“Hi Buddy”
+        </li>
+</ul>
+<p>
+        <br />
+</p>
+<p>
+	<strong><span style="color:#60D978;">习题1思路：</span></strong> 
+</p>
+<p>
+	<span>本题是让考生练习openshift的S2I功能，并且会对代码进行troubleshooting</span> 
+</p>
+<p>
+	题里给的代码格式是错的，需要troubleshooting,做题时也可以直接先clone代码，检查，如果是错误的就修改后提交再创建应用
+</p>
+<p>
+	其他都是正常的三个步骤：1.new-app ------&gt; 2.expose&nbsp; --------&gt; 3.检查
+</p>
+<p>
+	<span>参考教材p43实验</span> 
+</p>
+<p>
+	<span style="color:#60D978;"><strong>习题1答案（以个人编号20为例）：</strong></span> 
+</p>
+<p>
+	oc login https://openshift.example.com:8443&nbsp; -u devuser-<span style="color:#337FE5;"><strong>20</strong></span> -p appops-<span style="color:#337FE5;"><strong>20</strong></span><br />
+oc new-project&nbsp; project-1-<span style="color:#337FE5;"><strong>20</strong></span><br />
+oc new-app&nbsp; --name hello-appops&nbsp; --build-env npm_config_registry=http://openshift.example.com:8081/nexus/content/groups/nodejs/ http://openshift.example.com:8083/root/nodejs-helloworld-<strong><span style="color:#337FE5;">20</span></strong>.git<br />
+oc logs -f bc/hello-appops<br />
+git clone&nbsp; http://openshift.example.com:8083/root/nodejs-helloworld-<strong><span style="color:#337FE5;">20</span></strong>.git<br />
+cd nodejs-helloworld-<span style="color:#337FE5;"><strong>20</strong></span>/<br />
+python -m json.tool package.json<br />
+vim package.json (编辑第12行)<br />
+git config --global user.email "test@example.com"<br />
+git config --global user.name "test"<br />
+git add&nbsp; .<br />
+git commit&nbsp; -m "update package.json"<br />
+git push&nbsp;<br />
+oc get bc&nbsp;<br />
+oc start-build&nbsp; bc/hello-appops<br />
+oc status&nbsp;<br />
+oc get pods<br />
+oc get svc&nbsp;<br />
+oc expose&nbsp; svc&nbsp; hello-appops --hostname=hello-<span style="color:#337FE5;"><strong>20</strong></span>.apps.example.com<br />
+oc get route<br />
+curl&nbsp; hello-<span style="color:#337FE5;"><strong>20</strong></span>.apps.example.com&nbsp;
+</p>
+<p>
+	或者把9.98.13.163 hello-20.example.com
+</p>
+<div>
+	添加到hosts后用浏览器访问，考试时候无需添加hosts
+</div>
+<p>
+	如果页面显示<span>Hello AppOps!，则本题成功</span><br />
+<br />
+#请务必执行如下命令，还原源代码，如果不做此步骤，直接运行就能成功，无法troubleshooting<br />
+sed -i 's/express":/express" /g' package.json<br />
+git add&nbsp; .<br />
+git commit&nbsp; -m "restore package.json"<br />
+git push&nbsp;
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<strong><span style="color:#60D978;">习题2思路：</span></strong> 
+</p>
+<p>
+	本题是让考生练习openshift的configmap功能,理解什么是configmap是解题关键
+</p>
+<p>
+	configmap是用来保存key:value键值对的配置数据
+</p>
+<p>
+	可以从文件中创建，也可以直接从字符串中创建
+</p>
+<p>
+	绑定到dc以后，生成的pod会把该键值对写到环境变量中或者存放在文件中
+</p>
+<p>
+	本题的镜像运行着flask小程序，该小程序从环境变量中取AAA的值，并且输出到web上
+</p>
+<p>
+	代码如下：
+</p>
+<p>
+	from flask import Flask<br />
+import os<br />
+app = Flask(__name__)<br />
+@app.route('/')<br />
+def hello_world():<br />
+&nbsp; &nbsp; get_env=os.popen("echo APP_ENV var is \=\=\&gt; $AAA")<br />
+&nbsp; &nbsp; return get_env.read()<br />
+if __name__ == "__main__":<br />
+&nbsp; &nbsp; app.run(debug = True, host = '0.0.0.0')
+</p>
+<p>
+	所以只有当成功配置完configmap后，页面输出结果才会正常
+</p>
+<p>
+	参考教材p84实验
+</p>
+<p>
+	<strong><span style="color:#60D978;">习题2答案（以个人编号20为例）：</span></strong>
+</p>
+<p>
+	oc new-project project-2-<span style="color:#337FE5;"><strong>20</strong></span><br />
+oc new-app --docker-image=docker-registry.default.svc:5000/openshift/flask --name=flask-test<br />
+oc expose svc/flask-test --hostname flask-<span style="color:#337FE5;"><strong>20</strong></span>.apps.example.com<br />
+curl flask-<strong><span style="color:#337FE5;">20</span></strong>.apps.example.com<br />
+结果为APP_ENV var is ==&gt;<br />
+oc create configmap flaskconf --from-literal AAA="Hello AppOps"<br />
+oc set env dc/flask-test --from configmap/flaskconf<br />
+curl flask-<strong><span style="color:#337FE5;">20</span></strong>.apps.example.com<br />
+结果为APP_ENV var is ==&gt; Hello AppOps<br />
+oc get configmap flaskconf&nbsp; -o json &gt; /tmp/flaskconf-N.json
+</p>
+<p>
+        <br />
+</p>
+<p>
+        <br />
+</p>
+<p>
+        <strong><span style="color:#60D978;">习题3思路：</span></strong>
+</p>
+<p>
+        本题是让考生练习创建imagestream，并通过imagestream配合原码来发布app。同时，再次熟悉configmap的创建和使用，并尝试发布多个环境变量。
+</p>
+<p>
+        利用import-image子命令，在自己的项目中创建imagestream，然后借助S2I的方式来发布apache app。在应用运行起来之后，为其创建configmap并绑定到该应用的dc上。
+</p>
+<p>
+        确认app发布成功后，可以通过将应用route暴露出来，访问路由内容来确定发布信息是否正确。
+</p>
+<p>
+        也可以通过exec子命令查看pod内环境变量，从而验证configmap的配置是否正确。
+</p>
+<p>
+        参考教材p193实验
+</p>
+<p>
+        <strong><span style="color:#60D978;">习题3答案（以个人编号20为例）：</span></strong>
+</p>
+<p>
+# oc login  -u devuser-<span style="color:#337FE5;"><strong>20</strong></span> -p appops-<span style="color:#337FE5;"><strong>20</strong></span><br />
+# oc new-project project-3-<span style="color:#337FE5;"><strong>20</strong></span><br />
+# oc import-image apache --confirm --from docker-registry.default.svc:5000/openshift/httpd<br />
+# oc new-app --name web apache~http://openshift.example.com:8083/root/ex288-8.git<br />
+# oc create configmap webcmap --from-literal OCUSER=devuser --from-literal NUMBER=<span style="color:#337FE5;"><strong>20</strong></span><br />
+# oc set env dc/web --from configmap/webcmap<br />
+# oc expose svc/web --hostname=web.apps.example.com<br />
+# curl web.apps.example.com --> 看到Hello, World!<br />
+# oc exec -it web-2-tr8r6 env | grep OCUSER --> pod名以你自己的真实情况为准，此处只是例子，请以oc get pod命令查看自己的环境<br />
+# oc exec -it web-2-tr8r6 env | grep NUMBER<br />
+</p>
+<p>
+        <br />
+</p>
+<p>
+        <br />
+</p>
+<p>
+        <strong><span style="color:#60D978;">习题4思路：</span></strong>
+</p>
+<p>
+        本题是让考生熟悉build-hook的配置和使用，尝试对运行的S2I应用的build做hook，构建定制化的新的image。
+</p>
+<p>
+        利用S2I的方式来创建app，并expose出对应的route
+</p>
+<p>
+        利用set build-hook bc子命令来对上述app的bc创建hook
+</p>
+<p>
+        最后重新开启build构建进程是上述更新生效
+</p>
+<p>
+        参考教材p162实验
+</p>
+<p>
+        <strong><span style="color:#60D978;">习题4答案（以个人编号20为例）：</span></strong>
+</p>
+<p>
+# oc new-project octane-<span style="color:#337FE5;"><strong>20</strong></span><br />
+# oc new-app --name blog http://openshift.example.com:8083/root/ex288-9.git<br />
+# oc expose svc blog --hostname blog-octane-<span style="color:#337FE5;"><strong>20</strong></span>.apps.example.com<br />
+# oc set build-hook bc/blog --post-commit --command -- bash -c "cat /opt/app-root/etc/php.ini.template"<br />
+# oc describe bc/blog | grep Post<br />
+# oc start-build bc/blog<br />
+</p>
+<p>
+        <br />
+</p>
+<p>
+        <br />
+</p>
+<p>
+        <strong><span style="color:#60D978;">习题5思路：</span></strong>
+</p>
+<p>
+        本题是让考生掌握模板的编辑、创建和使用，并通过模板来发布一个具有完整资源的应用。
+</p>
+<p>
+        按题目需要修改模板文件，并使用文件创建模板
+</p>
+<p>
+        利用模板和题目给定的app创建命令来验证模板
+</p>
+<p>
+        参考教材p223实验
+</p>
+<p>
+        <strong><span style="color:#60D978;">习题5答案（以个人编号20为例）：</span></strong>
+</p>
+<p>
+# oc new-project indy-<span style="color:#337FE5;"><strong>20</strong></span><br />
+# wget http://control.example.com:8080/materials/template-notready.yaml<br />
+# vim template-notready.yaml<br />
+1 --------------------------<br />
+<           name: php:6.0<br />
+>           name: php:7.0<br />
+---<br />
+<           name: mysql:5.1<br />
+>           name: mysql:5.7<br />
+2 --------------------------<br />
+<         uri:<br />
+>         uri: http://openshift.example.com:8083/root/ex288-9.git<br />
+3 --------------------------<br />
+> - name: HELLO_AUDIENCE<br />
+>   displayName: The custon parameter HELLO_AUDIENCE<br />
+>   description: The custom parameter2<br />
+>   value: Avatar<br />
+4 --------------------------<br />
+<   name: test<br />
+---<br />
+>   name: ex288-php-mysql<br />
+>   namespace: indy-<span style="color:#337FE5;"><strong>20</strong></span><br />
+5 --------------------------<br />
+> - name: APPLICATION_DOMAIN<br />
+>   displayName: Application APPLICATION_DOMAIN<br />
+>   description: FQDN of the route to access the application<br />
+>   required: true<br />
+# oc create -f template-notready.yaml<br />
+# oc new-app ex288-php-mysql -p APPLICATION_DOMAIN=php-app-indy-<span style="color:#337FE5;"><strong>20</strong></span>.apps.example.com -p HELLO_MESSAGE=Hi -p HELLO_AUDIENCE=Buddy<br />
+</p>
+</body>
+</html>
